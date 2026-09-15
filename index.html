@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amara Aesthetic Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEFE9;
+    --paper-2:#E1E4DA;
+    --card:#DDD3C4;
+    --ink:#20241D;
+    --ink-soft:#4B5245;
+    --forest:#2C3B2E;
+    --forest-dark:#1D2820;
+    --clay:#A65B4A;
+    --clay-soft:#C98F7B;
+    --line:rgba(32,36,29,0.14);
+    --radius:4px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 32px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(237,239,233,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .logo{font-family:'Newsreader', serif; font-size:22px; font-weight:500; letter-spacing:-0.01em;}
+  .logo em{font-style:italic; color:var(--forest);}
+  .navlinks{display:flex; gap:36px; font-size:14.5px; color:var(--ink-soft);}
+  .navlinks a:hover{color:var(--ink);}
+  .navcta{
+    background:var(--forest); color:var(--paper);
+    padding:10px 20px; border-radius:var(--radius);
+    font-size:14px; font-weight:500;
+  }
+  .navcta:hover{background:var(--forest-dark);}
+
+  /* HERO */
+  .hero{padding:96px 0 80px;}
+  .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;}
+  .hero-tag{font-size:14.5px; color:var(--clay); font-weight:500; margin-bottom:20px;}
+  .hero h1{font-size:52px; line-height:1.08; color:var(--ink); max-width:520px;}
+  .hero h1 i{font-style:italic; color:var(--forest);}
+  .hero p.lead{margin-top:22px; font-size:17.5px; color:var(--ink-soft); max-width:440px;}
+  .hero-actions{display:flex; gap:14px; margin-top:34px;}
+  .btn-primary{
+    background:var(--forest); color:var(--paper); padding:14px 26px;
+    border-radius:var(--radius); font-size:15px; font-weight:500;
+    border:1px solid var(--forest); cursor:pointer;
+  }
+  .btn-primary:hover{background:var(--forest-dark);}
+  .btn-ghost{
+    padding:14px 26px; border-radius:var(--radius); font-size:15px;
+    border:1px solid var(--line); font-weight:500; color:var(--ink);
+    background:transparent;
+  }
+  .btn-ghost:hover{border-color:var(--ink);}
+  .stat-row{display:flex; gap:36px; margin-top:52px; padding-top:32px; border-top:1px solid var(--line); max-width:460px;}
+  .stat-row div h3{font-size:26px; color:var(--forest);}
+  .stat-row div p{font-size:13.5px; color:var(--ink-soft); margin-top:4px;}
+
+  /* Phone mockup */
+  .phone{
+    background:var(--forest-dark);
+    border-radius:28px;
+    padding:14px;
+    box-shadow:0 30px 60px -20px rgba(32,36,29,0.35);
+    max-width:340px; margin-left:auto;
+  }
+  .phone-screen{
+    background:var(--paper);
+    border-radius:18px;
+    padding:18px 16px 16px;
+    height:460px;
+    display:flex; flex-direction:column;
+  }
+  .phone-head{display:flex; align-items:center; gap:10px; padding-bottom:14px; border-bottom:1px solid var(--line);}
+  .avatar-dot{width:34px; height:34px; border-radius:50%; background:var(--forest); color:var(--paper); display:flex; align-items:center; justify-content:center; font-size:14px; font-family:'Newsreader',serif;}
+  .phone-head p{font-size:13.5px; font-weight:600;}
+  .phone-head span{font-size:11.5px; color:var(--ink-soft); display:flex; align-items:center; gap:5px;}
+  .online-dot{width:6px; height:6px; border-radius:50%; background:#4C7A4F; display:inline-block;}
+  .phone-msgs{flex:1; padding:14px 2px; display:flex; flex-direction:column; gap:10px; overflow:hidden;}
+  .bubble{max-width:78%; padding:9px 13px; font-size:13px; border-radius:14px; line-height:1.45;}
+  .bubble.bot{background:var(--card); border-bottom-left-radius:3px; align-self:flex-start;}
+  .bubble.user{background:var(--forest); color:var(--paper); border-bottom-right-radius:3px; align-self:flex-end;}
+  .phone-input{
+    margin-top:10px; border:1px solid var(--line); border-radius:20px;
+    padding:10px 14px; font-size:12.5px; color:var(--ink-soft); background:var(--paper-2);
+  }
+
+  /* SECTION HEADS */
+  .section{padding:88px 0;}
+  .section-head{max-width:560px; margin-bottom:52px;}
+  .section-head h2{font-size:34px; color:var(--ink);}
+  .section-head p{margin-top:14px; color:var(--ink-soft); font-size:16px;}
+  .alt{background:var(--paper-2);}
+
+  /* SERVICES */
+  .services-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .service-card{background:var(--paper); padding:32px 28px; min-height:200px; display:flex; flex-direction:column; justify-content:space-between;}
+  .service-card h3{font-size:20px; color:var(--ink); margin-bottom:8px;}
+  .service-card p{font-size:14.5px; color:var(--ink-soft);}
+  .service-meta{display:flex; justify-content:space-between; align-items:baseline; margin-top:22px; padding-top:16px; border-top:1px solid var(--line);}
+  .service-meta .price{font-family:'Newsreader', serif; font-size:19px; color:var(--forest);}
+  .service-meta .dur{font-size:12.5px; color:var(--ink-soft);}
+
+  /* TESTIMONI */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .testi-card{background:var(--paper); border:1px solid var(--line); padding:30px; border-radius:var(--radius);}
+  .testi-card p.quote{font-family:'Newsreader', serif; font-style:italic; font-size:18px; line-height:1.5; color:var(--ink); margin-bottom:20px;}
+  .testi-who{font-size:13.5px; color:var(--ink-soft); display:flex; justify-content:space-between; align-items:center;}
+  .stars{color:var(--clay); letter-spacing:2px; font-size:13px;}
+
+  /* CTA BAND */
+  .cta-band{
+    background:var(--forest); color:var(--paper);
+    border-radius:6px; padding:64px 56px;
+    display:flex; justify-content:space-between; align-items:center; gap:40px;
+  }
+  .cta-band h2{color:var(--paper); font-size:30px; max-width:400px;}
+  .cta-band p{color:rgba(237,239,233,0.75); margin-top:12px; max-width:380px; font-size:15px;}
+  .cta-band .btn-primary{background:var(--paper); color:var(--forest); border-color:var(--paper);}
+  .cta-band .btn-primary:hover{background:#fff;}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line); padding:48px 0; font-size:13.5px; color:var(--ink-soft);}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;}
+
+  /* CHAT WIDGET */
+  #chat-toggle{
+    position:fixed; bottom:26px; right:26px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:var(--forest); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px -8px rgba(32,36,29,0.45);
+  }
+  #chat-toggle svg{width:26px; height:26px;}
+  #chat-badge{
+    position:fixed; bottom:96px; right:22px; z-index:59;
+    background:var(--ink); color:var(--paper);
+    padding:9px 14px; border-radius:16px; font-size:13px;
+    box-shadow:0 8px 18px -6px rgba(0,0,0,0.3);
+    animation:float 2.6s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);}}
+
+  #chat-panel{
+    position:fixed; bottom:100px; right:26px; z-index:60;
+    width:368px; max-width:calc(100vw - 40px);
+    height:520px; max-height:calc(100vh - 140px);
+    background:var(--paper);
+    border-radius:14px;
+    box-shadow:0 30px 70px -18px rgba(20,22,17,0.45);
+    display:none; flex-direction:column; overflow:hidden;
+    border:1px solid var(--line);
+  }
+  #chat-panel.open{display:flex;}
+  .chat-header{
+    background:var(--forest); color:var(--paper);
+    padding:16px 18px; display:flex; align-items:center; gap:12px;
+  }
+  .chat-header .avatar-dot{background:var(--paper); color:var(--forest);}
+  .chat-header .htxt p{font-size:14.5px; font-weight:600;}
+  .chat-header .htxt span{font-size:12px; color:rgba(237,239,233,0.75); display:flex; align-items:center; gap:5px;}
+  .chat-header .online-dot{background:#8FCB86;}
+  #chat-close{margin-left:auto; background:none; border:none; cursor:pointer; color:var(--paper); opacity:0.8; font-size:20px; line-height:1;}
+  #chat-close:hover{opacity:1;}
+  #chat-messages{
+    flex:1; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:12px;
+    background:var(--paper);
+  }
+  .msg{max-width:82%; padding:10px 14px; border-radius:14px; font-size:14px; line-height:1.5;}
+  .msg.bot{background:var(--card); align-self:flex-start; border-bottom-left-radius:3px;}
+  .msg.user{background:var(--forest); color:var(--paper); align-self:flex-end; border-bottom-right-radius:3px;}
+  .msg.typing{background:var(--card); align-self:flex-start; border-bottom-left-radius:3px; display:flex; gap:4px; padding:14px 16px;}
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--ink-soft); animation:blink 1.2s infinite;}
+  .dot:nth-child(2){animation-delay:0.2s;} .dot:nth-child(3){animation-delay:0.4s;}
+  @keyframes blink{0%,80%,100%{opacity:0.25;} 40%{opacity:1;}}
+  #chat-form{
+    display:flex; gap:8px; padding:14px; border-top:1px solid var(--line); background:var(--paper);
+  }
+  #chat-input{
+    flex:1; border:1px solid var(--line); border-radius:20px; padding:11px 16px;
+    font-size:14px; font-family:'Inter', sans-serif; background:#fff; color:var(--ink);
+  }
+  #chat-input:focus{outline:none; border-color:var(--forest);}
+  #chat-send{
+    background:var(--forest); border:none; color:var(--paper); width:42px; height:42px;
+    border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  #chat-send:hover{background:var(--forest-dark);}
+  #chat-send:disabled{opacity:0.5; cursor:default;}
+
+  @media (max-width: 860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .phone{margin:0 auto;}
+    .hero h1{font-size:38px;}
+    .services-grid, .testi-grid{grid-template-columns:1fr;}
+    .cta-band{flex-direction:column; text-align:left; padding:44px 28px;}
+    .navlinks{display:none;}
+    #chat-panel{right:16px; bottom:88px; width:calc(100vw - 32px);}
+    #chat-toggle{right:16px;}
+    #chat-badge{right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">website klinik <em>demo</em></div>
+    <div class="navlinks">
+      <a href="#layanan">Layanan</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#booking">Booking</a>
+    </div>
+    <a href="#booking" class="navcta">Konsultasi Gratis</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="hero-tag">Klinik kecantikan &amp; perawatan kulit — Surabaya</p>
+      <h1>Pertanyaan pasien dijawab <i>saat itu juga</i>, jam berapa pun mereka bertanya.</h1>
+      <p class="lead">Amara ditemani asisten AI yang siap menjelaskan treatment, harga, dan jadwal konsultasi — tanpa pasien harus menunggu sampai klinik buka.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openChat()">Coba tanya asisten kami</button>
+        <a href="#layanan" class="btn-ghost">Lihat layanan</a>
+      </div>
+      <div class="stat-row">
+        <div><h3>8 detik</h3><p>rata-rata waktu respons pertama</p></div>
+        <div><h3>24 jam</h3><p>siap menjawab, tujuh hari seminggu</p></div>
+        <div><h3>4.9 / 5</h3><p>rating dari 340+ pasien</p></div>
+      </div>
+    </div>
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-head">
+          <div class="avatar-dot">A</div>
+          <div>
+            <p>Amara Concierge</p>
+            <span><span class="online-dot"></span> Online sekarang</span>
+          </div>
+        </div>
+        <div class="phone-msgs">
+          <div class="bubble bot">Halo! Ada yang bisa saya bantu soal treatment di Amara?</div>
+          <div class="bubble user">Facial buat kulit kusam ada rekomendasi?</div>
+          <div class="bubble bot">Bisa coba Glow Facial atau Skin Booster. Mau saya jelaskan bedanya?</div>
+          <div class="bubble user">Boleh, sama harganya berapa</div>
+        </div>
+        <div class="phone-input">Tulis pertanyaan Anda...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="layanan">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Layanan pilihan</h2>
+      <p>Setiap treatment ditangani oleh dokter estetika berpengalaman, dengan produk dan alat yang telah tersertifikasi.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div>
+          <h3>Glow Facial</h3>
+          <p>Deep cleansing dan serum brightening untuk kulit kusam dan lelah.</p>
+        </div>
+        <div class="service-meta"><span class="price">Rp 350rb</span><span class="dur">60 menit</span></div>
+      </div>
+      <div class="service-card">
+        <div>
+          <h3>Botox &amp; Filler</h3>
+          <p>Mengurangi garis halus dan mengembalikan volume wajah secara natural.</p>
+        </div>
+        <div class="service-meta"><span class="price">Mulai Rp 2,5jt</span><span class="dur">30 menit</span></div>
+      </div>
+      <div class="service-card">
+        <div>
+          <h3>Laser Hair Removal</h3>
+          <p>Menghilangkan bulu secara permanen dengan teknologi diode laser.</p>
+        </div>
+        <div class="service-meta"><span class="price">Mulai Rp 500rb</span><span class="dur">45 menit</span></div>
+      </div>
+      <div class="service-card">
+        <div>
+          <h3>Chemical Peel</h3>
+          <p>Mengangkat sel kulit mati dan memudarkan bekas jerawat bertahap.</p>
+        </div>
+        <div class="service-meta"><span class="price">Rp 450rb</span><span class="dur">40 menit</span></div>
+      </div>
+      <div class="service-card">
+        <div>
+          <h3>Acne Treatment</h3>
+          <p>Program perawatan jerawat aktif dengan evaluasi rutin setiap sesi.</p>
+        </div>
+        <div class="service-meta"><span class="price">Rp 400rb</span><span class="dur">50 menit</span></div>
+      </div>
+      <div class="service-card">
+        <div>
+          <h3>Skin Booster</h3>
+          <p>Injeksi hyaluronic acid untuk kulit lebih kenyal dan lembap dari dalam.</p>
+        </div>
+        <div class="service-meta"><span class="price">Mulai Rp 1,8jt</span><span class="dur">40 menit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="testimoni">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Kata mereka yang sudah mencoba</h2>
+      <p>Sebagian kecil dari pengalaman pasien yang datang kembali untuk perawatan lanjutan.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="quote">Chat balasnya cepet banget walau saya tanya malam-malam. Langsung dikasih rekomendasi treatment yang cocok.</p>
+        <div class="testi-who"><span>Dinda R.</span><span class="stars">★★★★★</span></div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">Booking gampang, ga perlu telepon-telepon. Tinggal chat, langsung dapat jadwal yang pas.</p>
+        <div class="testi-who"><span>Michelle T.</span><span class="stars">★★★★★</span></div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">Suka karena dijelasin detail soal harga dan prosesnya sebelum saya datang, jadi ga bingung lagi.</p>
+        <div class="testi-who"><span>Anisa P.</span><span class="stars">★★★★★</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="booking">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Masih ragu treatment mana yang cocok?</h2>
+        <p>Tanya langsung ke asisten Amara, atau jadwalkan konsultasi gratis dengan dokter kami.</p>
+      </div>
+      <button class="btn-primary" onclick="openChat()">Mulai konsultasi</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo" style="margin-bottom:10px;">Amara <em>Aesthetic</em></div>
+      <p>Jl. Raya Darmo No. 88, Surabaya</p>
+    </div>
+    <div>
+      <p>Buka setiap hari, 09.00 – 20.00</p>
+      <p>Konsultasi AI aktif 24 jam</p>
+    </div>
+  </div>
+</footer>
+
+<div id="chat-badge">Coba tanya saya soal treatment ✨</div>
+<button id="chat-toggle" onclick="openChat()" aria-label="Buka chat">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#EDEFE9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+  </svg>
+</button>
+
+<div id="chat-panel">
+  <div class="chat-header">
+    <div class="avatar-dot">A</div>
+    <div class="htxt">
+      <p>Amara Concierge</p>
+      <span><span class="online-dot"></span> Biasanya membalas dalam hitungan detik</span>
+    </div>
+    <button id="chat-close" onclick="closeChat()">&times;</button>
+  </div>
+  <div id="chat-messages"></div>
+  <form id="chat-form">
+    <input id="chat-input" type="text" placeholder="Tulis pertanyaan Anda..." autocomplete="off" />
+    <button id="chat-send" type="submit" aria-label="Kirim">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EDEFE9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </button>
+  </form>
+</div>
+
+<script>
+  let hasOpened = false;
+
+  // Membuat Session ID unik per pengunjung agar n8n bisa mengingat riwayat chat
+  let sessionId = localStorage.getItem('amara_session_id');
+  if (!sessionId) {
+    sessionId = 'sess_' + Math.random().toString(36).substring(2, 11);
+    localStorage.setItem('amara_session_id', sessionId);
+  }
+
+  const panel = document.getElementById('chat-panel');
+  const messagesEl = document.getElementById('chat-messages');
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send');
+  const badge = document.getElementById('chat-badge');
+
+  function openChat(){
+    panel.classList.add('open');
+    badge.style.display = 'none';
+    if(!hasOpened){
+      hasOpened = true;
+      addMessage('bot', 'Halo! Saya asisten Amara. Ada yang bisa saya bantu soal treatment, harga, atau jadwal konsultasi?');
+    }
+    input.focus();
+  }
+  
+  function closeChat(){
+    panel.classList.remove('open');
+  }
+
+  function addMessage(role, text) {
+    const div = document.createElement('div');
+    div.className = 'msg ' + role;
+
+    if (role === 'bot') {
+    // 1. Ubah **teks** menjadi <strong>teks</strong> (Bold)
+      let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // 2. Ubah *teks* atau _teks_ menjadi <em>teks</em> (Italic)
+      formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    
+    // 3. Ubah \n atau enter menjadi <br> agar baris baru ter-render sempurna
+      formattedText = formattedText.replace(/\n/g, '<br>');
+
+      div.innerHTML = formattedText;
+    } else {
+    // Pesan dari user tetap teks biasa untuk keamanan
+      div.textContent = text;
+    }
+
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function showTyping(){
+    const div = document.createElement('div');
+    div.className = 'msg typing';
+    div.id = 'typing-indicator';
+    div.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+  
+  function hideTyping(){
+    const el = document.getElementById('typing-indicator');
+    if(el) el.remove();
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if(!text) return;
+    
+    addMessage('user', text);
+    input.value = '';
+    sendBtn.disabled = true;
+    showTyping();
+
+    try {
+      const response = await fetch('https://jodarenn06.app.n8n.cloud/webhook/chatbot website', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          session_id: sessionId,
+          user_message: text,
+          page_url: window.location.href,
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      hideTyping();
+
+      if (!response.ok) {
+        addMessage('bot', 'Maaf, sistem AI sedang kendala. Silakan coba sebentar lagi.');
+        return;
+      }
+
+      const data = await response.json();
+      const reply = data.output || data.reply || data.text || 'Maaf, bisa diulangi pertanyaannya?';
+      addMessage('bot', reply);
+    
+    } catch (err) {
+      hideTyping();
+      addMessage('bot', 'Maaf, sedang ada gangguan koneksi. Silakan coba lagi.');
+      console.error('Chat error:', err);
+  
+    } finally {
+      sendBtn.disabled = false;
+      input.focus();
+    }
+  });
+</script>
